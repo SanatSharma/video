@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="http://vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/5.19/video.min.js"></script>
+    <script src="node_modules\videojs-watermark\dist\videojs-watermark.min.js"></script>
+    <link href="node_modules\videojs-watermark\dist\videojs.watermark.css" rel="stylesheet">
+    <script src="node_modules\videojs-seek-buttons\dist\videojs-seek-buttons.min.js"></script>
+    <link href="node_modules\videojs-seek-buttons\dist\videojs-seek-buttons.css" rel="stylesheet">
+    <script src="node_modules\videojs-brand\dist\videojs-brand.min.js"></script>
+    <link href="node_modules\videojs-brand\dist\videojs-brand.css" rel="stylesheet">
+    <script src="node_modules\videojs-contrib-dash-s1\dist\videojs-contrib-dash.min.js"></script>
+    <link href="node_modules\videojs-contrib-dash-s1\dist\videojs-contrib-dash.min.js" rel="stylesheet">
+</head>
+<body>
+
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+<video width="640" height="440"
+    id="my-player"
+    class="video-js"
+    preload="auto"
+    controls
+    poster="https://upload.wikimedia.org/wikipedia/commons/5/5a/McLaren_MP4-28_Perez_Barcelona_Test_2_%28cropped%29.jpg "
+    data-setup='{
+        "plugins": { "seekButtons": {"forward": 30, "back": 10},
+                     "brand": {"image": "logo-example.png",
+                                "title": "my_image", "destination": "http://allthegreatshows.com"}},
+        "playbackRates": [0.5,1,1.5,2]
+    }'
+    >
+    <source src="https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd",
+    type="application/dash+xml"></source>
+    <source src="vid.mp4" type="video/mp4"></source>
+    <source src="http://techslides.com/demos/sample-videos/small.webm" type="video/webm"></source>
+    <source src="http://techslides.com/demos/sample-videos/small.ogv" type="video/ogg"></source>
+    <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a
+    web browser that
+    <a href="http://videojs.com/html5-video-support/" target="_blank">
+    supports HTML5 video</a>
+    </p>
+</video>
+
+<script>
+        var player = videojs('my-player');
+        player['playbackRates'] = [0.5,1,1.5,2];
+        player['aspectRatio'] = "16:9"
+        console.log(player);
+</script>
+    
+
+</body>
+</html>

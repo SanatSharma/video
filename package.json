@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "video.js": "^6.2.8",
+    "videojs-brand": "0.0.4",
+    "videojs-contrib-dash-s1": "^2.1.5",
+    "videojs-seek-buttons": "^1.1.0",
+    "videojs-watermark": "^2.0.0"
+  }
+}
