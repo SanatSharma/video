@@ -3,19 +3,28 @@
 <head>
     <link href="http://vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
     <script src="http://vjs.zencdn.net/5.19/video.min.js"></script>
-    <script src="node_modules\videojs-watermark\dist\videojs-watermark.min.js"></script>
-    <link href="node_modules\videojs-watermark\dist\videojs.watermark.css" rel="stylesheet">
     <script src="node_modules\videojs-seek-buttons\dist\videojs-seek-buttons.min.js"></script>
     <link href="node_modules\videojs-seek-buttons\dist\videojs-seek-buttons.css" rel="stylesheet">
     <script src="node_modules\videojs-brand\dist\videojs-brand.min.js"></script>
     <link href="node_modules\videojs-brand\dist\videojs-brand.css" rel="stylesheet">
     <script src="node_modules\videojs-contrib-dash-s1\dist\videojs-contrib-dash.min.js"></script>
     <link href="node_modules\videojs-contrib-dash-s1\dist\videojs-contrib-dash.min.js" rel="stylesheet">
+    <script src="videojs.watermark.js"></script>
+    <link href="videojs.watermark.css" rel="stylesheet">
 </head>
 <body>
-
-<p>This is a paragraph.</p>
-<p>This is another paragraph.</p>
+<script>
+//    <script src="node_modules\videojs-watermark\dist\videojs-watermark.min.js">
+//        <link href="node_modules\videojs-watermark\dist\videojs-watermark.css" rel="stylesheet">
+/*watermark({
+      file: 'image/logo.png',
+      xpos: 50,
+      ypos: 50,
+      xrepeat: 0,
+      opacity: 0.1
+    });  */
+</script>
+<h1>Sample video player</h1>
 <video width="640" height="440"
     id="my-player"
     class="video-js"
@@ -25,7 +34,8 @@
     data-setup='{
         "plugins": { "seekButtons": {"forward": 30, "back": 10},
                      "brand": {"image": "logo-example.png",
-                                "title": "my_image", "destination": "http://allthegreatshows.com"}},
+                                "title": "my_image", "destination": "http://allthegreatshows.com"},
+                     "watermark": {"file": "2.jpg", "xpos": 60, "ypos":30, "xrepeat":0, "opacity":1}},
         "playbackRates": [0.5,1,1.5,2]
     }'
     >
