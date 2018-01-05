@@ -2,13 +2,19 @@
 <html>
     <title>Test</title>
 <head>
-    <link href="http://vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
-    <script src="http://vjs.zencdn.net/5.19/video.min.js"></script>
+    <script>
+  //   <script src="node_modules\videojs-contrib-dash-s1\dist\videojs-contrib-dash.min.js">
+  //    <script src="node_modules\video.js\dist\video.min.js">
+  //    <link href="node_modules\video.js\dist\video-js.css" rel="stylesheet">
+    </script>
+     
+    <link href="http://vjs.zencdn.net/5.8.8/video-js.min.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/5.8.8/video.min.js"></script>
+    <script src="node_modules\videojs-flash\dist\videojs-flash.min.js"></script>        
     <script src="node_modules\videojs-seek-buttons\dist\videojs-seek-buttons.min.js"></script>
     <link href="node_modules\videojs-seek-buttons\dist\videojs-seek-buttons.css" rel="stylesheet">
     <script src="node_modules\videojs-brand\dist\videojs-brand.min.js"></script>
     <link href="node_modules\videojs-brand\dist\videojs-brand.css" rel="stylesheet">
-    <script src="node_modules\videojs-contrib-dash-s1\dist\videojs-contrib-dash.min.js"></script>
     <link href="node_modules\videojs-contrib-dash-s1\dist\videojs-contrib-dash.css" rel="stylesheet">
     <script src="videojs.watermark.js"></script>
     <link href="videojs.watermark.css" rel="stylesheet">
@@ -18,9 +24,8 @@
 </head>
 <body>
 <h1>Sample video player</h1>
-<div id = "video">
 <video 
-    class = "video-js vjs-default-skin vjs-big-play-centered"
+    class = "video-js vjs-default-skin vjs-big-play-centered "
     width="640" height="440"
     id="my-player"
     class="video-js"
@@ -28,6 +33,7 @@
     controls
     poster="https://upload.wikimedia.org/wikipedia/commons/5/5a/McLaren_MP4-28_Perez_Barcelona_Test_2_%28cropped%29.jpg "
     data-setup='{
+        "techOrder": ["flash", "html5"],        
         "plugins": { "seekButtons": {"forward": 30, "back": 10},
                      "brand": {"image": "logo-example.png",
                                 "title": "my_image", "destination": "http://allthegreatshows.com"},
@@ -36,6 +42,7 @@
     }'
     >
     <source src="rtmp://192.168.137.1:1935/live2/puneet" type="rtmp/mp4"></source>
+    
     <p class="vjs-no-js">
     To view this video please enable JavaScript, and consider upgrading to a
     web browser that
@@ -43,9 +50,10 @@
     supports HTML5 video</a>
     </p>
 </video>
-</div>
 
 <script>
+//        <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
+
    //  <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
    // <source src="http://techslides.com/demos/sample-videos/small.webm" type="video/webm"></source>
    // <source src="http://techslides.com/demos/sample-videos/small.ogv" type="video/ogg"></source>
@@ -96,6 +104,8 @@
           end: 'pause'
         }]
       });
+
+      
     }(window, window.videojs));
 
     console.log("Ran this");

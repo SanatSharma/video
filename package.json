@@ -1,10 +1,15 @@
 {
   "dependencies": {
-    "video.js": "^6.2.8",
+    "grunt": "^1.0.1",
+    "package.json": "^2.0.1",
+    "video.js": "^6.4.0",
     "videojs-brand": "0.0.4",
+    "videojs-contrib-dash": "^2.9.2",
     "videojs-contrib-dash-s1": "^2.1.5",
+    "videojs-flash": "^2.1.0",
     "videojs-overlay": "^2.0.0",
     "videojs-seek-buttons": "^1.1.0",
-    "videojs-watermark": "^2.0.0"
+    "videojs-watermark": "^2.0.0",
+    "videojs-youtube": "^2.4.1"
   }
 }

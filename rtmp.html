@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <title>Rtmp</title>
+<head>
+<link href="node_modules\video.js\dist\video-js.min.css" rel="stylesheet">
+<script src="node_modules\video.js\dist\video.min.js"></script>
+<script src="node_modules\videojs-flash\dist\videojs-flash.min.js"></script>
+<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+<script src="node_modules\videojs-contrib-dash\dist\videojs-dash.min.js"></script>
+<script>
+    
+</script>
+</head>
+<body>
+<video id="my-player" class="video-js vjs-default-skin vjs-big-play-centered" controls width="840" height="420" 
+    data-setup='{"techOrder": ["flash", "html5"]}'>
+<source src="https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd" type="application/dash+xml"></source>
+</video>
+<script>
+    console.log("**************************************");
+    (function(window, videojs) {
+      var player = videojs("my-player", {
+         html5: {
+            dash: {
+            setMaxAllowedBitrateFor: ['video', 200]
+            }
+        }
+    });
+    }(window, window.videojs));
+</script>
+
+<body>
+</html> 

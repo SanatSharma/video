@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="node_modules\video.js\dist\video-js.min.css" />
+  <script src="node_modules\video.js\dist\video.min.js"></script>
+  <script src="node_modules\videojs-youtube\dist\Youtube.min.js"></script>
+  <script src="videojs.watermark.js"></script>
+  <link href="videojs.watermark.css" rel="stylesheet">
+
+</head>
+<body>
+  <video
+    id="vid1"
+    class="video-js vjs-default-skin vjs-big-play-centered"
+    controls
+    autoplay
+    width="640" height="440"
+    data-setup='{ "techOrder": ["youtube"], 
+    "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}], 
+    "youtube": { "iv_load_policy": 3, "modestbranding": 1, "showinfo": 0, "rel":0 },
+    "plugins": {"watermark": {"file": "logo.png", "xpos": 100, "ypos":100, "xrepeat":0, "opacity":100}}
+  }'
+    
+  >
+
+
+  </video>
+
+</body>
+</html>
