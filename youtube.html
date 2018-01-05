@@ -6,11 +6,13 @@
   <script src="node_modules\videojs-youtube\dist\Youtube.min.js"></script>
   <script src="videojs.watermark.js"></script>
   <link href="videojs.watermark.css" rel="stylesheet">
+  <script src="node_modules\videojs-overlay\dist\videojs-overlay.min.js"></script>
+  <link href="node_modules\videojs-overlay\dist\videojs-overlay.css" rel="stylesheet">
 
 </head>
 <body>
   <video
-    id="vid1"
+    id="my_player"
     class="video-js vjs-default-skin vjs-big-play-centered"
     controls
     autoplay
@@ -23,8 +25,60 @@
     
   >
 
-
   </video>
+
+  <script>
+    var player = videojs('my_player');
+
+
+    setInterval(executeOverlay, 5000, player);
+    
+    function executeOverlay(player){
+      var currentTime = player.currentTime();
+      var alignment = getRandomAlignment();
+
+      var overlay = {
+        content: 'Overlay',
+        debug: true,
+        overlays: [{
+          start: currentTime,
+          end: currentTime+5,
+          align: alignment
+        }]};
+
+      
+      player.overlay(overlay);
+    }
+
+    function getRandomAlignment(){
+      var choice = Math.floor(Math.random() * 9);
+      var align;
+      switch(choice){
+        case 0: align = "top-left";
+          break;
+        case 1: align = "top";
+          break;
+        case 2: align = "top-right";
+          break;
+        case 3: align = "center";
+          break;
+        case 4: align = "left";
+          break;
+        case 5: align = "right";
+          break;
+        case 6: align = "bottom-left";
+          break;
+        case 7: align = "bottom";
+          break;
+        case 8: align = "bottom-right";
+          break;
+        default:
+          console.log("ISSUE");
+      }
+      return align;
+    }
+
+  </script>
 
 </body>
 </html>
