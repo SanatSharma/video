@@ -2,7 +2,7 @@
   "dependencies": {
     "grunt": "^1.0.1",
     "package.json": "^2.0.1",
-    "video.js": "^6.4.0",
+    "video.js": "^6.6.0",
     "videojs-brand": "0.0.4",
     "videojs-contrib-dash": "^2.9.2",
     "videojs-contrib-dash-s1": "^2.1.5",

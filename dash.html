@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <script src="http://vjs.zencdn.net/6.6.0/video.js"></script>
+            <link type="text/css" rel="stylesheet" href="node_modules\video.js\dist\video-js.min.css" />
+            
+            <!-- Dash.js -->
+            <script src="http://cdn.dashjs.org/latest/dash.all.debug.js"></script>
+            
+            <!-- videojs-contrib-dash script -->
+            <script src="https://unpkg.com/videojs-contrib-dash@2.9.2/dist/videojs-dash.js"></script>
+            
+            <!-- Overlay -->
+            <script src="node_modules\videojs-overlay\dist\videojs-overlay.min.js"></script>
+            <link href="node_modules\videojs-overlay\dist\videojs-overlay.css" rel="stylesheet">
+
+            <!-- Seek buttons -->
+             <script src="node_modules\videojs-seek-buttons\dist\videojs-seek-buttons.min.js"></script>
+   
+            <!-- Watermark -->
+            <script src="videojs.watermark.js"></script>
+            <link href="videojs.watermark.css" rel="stylesheet">
+           
+
+    </head>
+    <body>
+      
+
+        <video 
+            id=my-player
+            preload="auto"
+            class="video-js vjs-default-skin vjs-big-play-centered" controls
+            data-setup='{
+                "playbackRates": [0.5,1,1.5,2],
+                "plugins": {"watermark": {"file": "logo.png", "xpos": 100, "ypos":100, "xrepeat":0, "opacity":100}}
+  
+            }'
+  
+        >
+           
+            </video>
+
+        <script>
+        var player = videojs('my-player');
+        
+        player.ready(function() {
+          player.src({
+            src: 'http://dash.akamaized.net/dash264/TestCasesIOP33/MPDChaining/fallback_chain/1/manifest_fallback_MPDChaining.mpd',
+            type: 'application/dash+xml'
+          });
+        });
+
+        setInterval(executeOverlay, 5000, player);
+    
+        function executeOverlay(player){
+        var currentTime = player.currentTime();
+        var alignment = getRandomAlignment();
+
+        var overlay = {
+            content: 'Overlay',
+            debug: true,
+            overlays: [{
+            start: currentTime,
+            end: currentTime+5,
+            align: alignment
+            }]};
+
+        
+        player.overlay(overlay);
+        }
+
+        function getRandomAlignment(){
+        var choice = Math.floor(Math.random() * 9);
+        var align;
+        switch(choice){
+            case 0: align = "top-left";
+            break;
+            case 1: align = "top";
+            break;
+            case 2: align = "top-right";
+            break;
+            case 3: align = "center";
+            break;
+            case 4: align = "left";
+            break;
+            case 5: align = "right";
+            break;
+            case 6: align = "bottom-left";
+            break;
+            case 7: align = "bottom";
+            break;
+            case 8: align = "bottom-right";
+            break;
+            default:
+            console.log("ISSUE");
+        }
+        return align;
+        }
+        </script>    
+    </body>
+</html>
