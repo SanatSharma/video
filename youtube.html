@@ -27,20 +27,7 @@
   </video>
 
   <script>
-/*      <video
-    id="my_player"
-    class="video-js vjs-default-skin vjs-big-play-centered"
-    controls
-    autoplay
-    width="640" height="440"
-    data-setup='{ "techOrder": ["youtube"], 
-    "sources": [{ "type": "video/vimeo", "src": "https://www.youtube.com/watch?v=e1YDX3ElSHA&feature=em-share_video_user"}], 
-    "youtube": { "iv_load_policy": 3, "modestbranding": 1, "showinfo": 0, "rel":0 },
-    "plugins": {"watermark": {"file": "logo.png", "xpos": 100, "ypos":100, "xrepeat":0, "opacity":100}}
-  }'
-    
-  >
-*/
+
 $(document).ready(function(){
    $('my_player').bind('contextmenu',function() { return false; });
 })
@@ -50,52 +37,52 @@ $(document).ready(function(){
     var player = videojs('my_player');
 
 
-    setInterval(executeOverlay, 5000, player);
-    
-    function executeOverlay(player){
-      var currentTime = player.currentTime();
-      var alignment = getRandomAlignment();
-
-      var overlay = {
-        content: 'Overlay',
-        debug: true,
-        overlays: [{
-          start: currentTime,
-          end: currentTime+5,
-          align: alignment
-        }]};
-
+      setInterval(executeOverlay, 5000, player);
       
-      player.overlay(overlay);
-    }
+      function executeOverlay(player){
+        var currentTime = player.currentTime();
+        var alignment = getRandomAlignment();
 
-    function getRandomAlignment(){
-      var choice = Math.floor(Math.random() * 9);
-      var align;
-      switch(choice){
-        case 0: align = "top-left";
-          break;
-        case 1: align = "top";
-          break;
-        case 2: align = "top-right";
-          break;
-        case 3: align = "center";
-          break;
-        case 4: align = "left";
-          break;
-        case 5: align = "right";
-          break;
-        case 6: align = "bottom-left";
-          break;
-        case 7: align = "bottom";
-          break;
-        case 8: align = "bottom-right";
-          break;
-        default:
-          console.log("ISSUE");
+        var overlay = {
+          content: 'Overlay',
+          debug: true,
+          overlays: [{
+            start: currentTime,
+            end: currentTime+5,
+            align: alignment
+          }]};
+
+        
+        player.overlay(overlay);
       }
-      return align;
-    }
+
+      function getRandomAlignment(){
+        var choice = Math.floor(Math.random() * 9);
+        var align;
+        switch(choice){
+          case 0: align = "top-left";
+            break;
+          case 1: align = "top";
+            break;
+          case 2: align = "top-right";
+            break;
+          case 3: align = "center";
+            break;
+          case 4: align = "left";
+            break;
+          case 5: align = "right";
+            break;
+          case 6: align = "bottom-left";
+            break;
+          case 7: align = "bottom";
+            break;
+          case 8: align = "bottom-right";
+            break;
+          default:
+            console.log("ISSUE");
+        }
+        return align;
+      }
 
   </script>
 

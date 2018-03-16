@@ -21,6 +21,9 @@
             <script src="videojs.watermark.js"></script>
             <link href="videojs.watermark.css" rel="stylesheet">
            
+            <!-- Jquery -->
+            <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  
 
     </head>
     <body>
@@ -33,17 +36,15 @@
             data-setup='{
                 "playbackRates": [0.5,1,1.5,2],
                 "plugins": {"watermark": {"file": "logo.png", "xpos": 100, "ypos":100, "xrepeat":0, "opacity":100}}
-  
-            }'
-  
+            }'  
         >
-           
-            </video>
+        </video>
 
         <script>
         var player = videojs('my-player');
         
         player.ready(function() {
+            $('my_player').bind('contextmenu',function() { return false; });
           player.src({
             src: 'http://dash.akamaized.net/dash264/TestCasesIOP33/MPDChaining/fallback_chain/1/manifest_fallback_MPDChaining.mpd',
             type: 'application/dash+xml'
