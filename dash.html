@@ -46,10 +46,12 @@
         player.ready(function() {
             $('my_player').bind('contextmenu',function() { return false; });
           player.src({
-            src: 'http://dash.akamaized.net/dash264/TestCasesIOP33/MPDChaining/fallback_chain/1/manifest_fallback_MPDChaining.mpd',
+            src: './output/stream.mpd',
             type: 'application/dash+xml'
           });
         });
+
+//            src: 'http://dash.akamaized.net/dash264/TestCasesIOP33/MPDChaining/fallback_chain/1/manifest_fallback_MPDChaining.mpd',
 
         setInterval(executeOverlay, 5000, player);
     
