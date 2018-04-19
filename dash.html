@@ -46,7 +46,7 @@
         player.ready(function() {
             $('my_player').bind('contextmenu',function() { return false; });
           player.src({
-            src: './output/stream.mpd',
+            src: 'https://s3-us-west-2.amazonaws.com/sanats/stream.mpd',
             type: 'application/dash+xml'
           });
         });
