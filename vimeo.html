@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <title>vimeo</title>
+<head>     
+    <link href="http://vjs.zencdn.net/5.8.8/video-js.min.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/5.8.8/video.min.js"></script>
+    <script src="node_modules\videojs-flash\dist\videojs-flash.min.js"></script>        
+    <script src="node_modules\videojs-seek-buttons\dist\videojs-seek-buttons.min.js"></script>
+    <link href="node_modules\videojs-seek-buttons\dist\videojs-seek-buttons.css" rel="stylesheet">
+    <script src="node_modules\videojs-brand\dist\videojs-brand.min.js"></script>
+    <link href="node_modules\videojs-brand\dist\videojs-brand.css" rel="stylesheet">
+    <script src="videojs.watermark.js"></script>
+    <link href="videojs.watermark.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="node_modules\videojs-overlay\dist\videojs-overlay.min.js"></script>
+    <link href="node_modules\videojs-overlay\dist\videojs-overlay.css" rel="stylesheet">
+    <script src="videojs-vimeo.min.js"></script>
+</head>
+<body>
+<h1>Sample video player</h1>
+<video 
+    class = "video-js vjs-default-skin vjs-big-play-centered "
+    width="640" height="440"
+    id="my-player"
+    preload="auto"
+    controls
+    poster="https://upload.wikimedia.org/wikipedia/commons/5/5a/McLaren_MP4-28_Perez_Barcelona_Test_2_%28cropped%29.jpg "
+    data-setup='{
+        "techOrder": ["vimeo", "html5"],        
+        "plugins": { "seekButtons": {"forward": 30, "back": 10},
+                     "brand": {"image": "logo-example.png",
+                                "title": "my_image", "destination": "http://allthegreatshows.com"},
+                     "watermark": {"file": "2.jpg", "xpos": 60, "ypos":30, "xrepeat":0, "opacity":0.3}},
+        "playbackRates": [0.5,1,1.5,2],
+        "vimeo": { "color": "#fbc51b"}
+    }'
+    >
+    <source src="https://vimeo.com/287244348" type="video/vimeo"></source>
+
+    <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a
+    web browser that
+    <a href="http://videojs.com/html5-video-support/" target="_blank">
+    supports HTML5 video</a>
+    </p>
+</video>
+
+<script>
+    var player = videojs('my-player');
+    //document.body.oncontextmenu=function(){return false;}
+    var p = document.getElementById('my-player_html5_api');
+    var timer = 0;
+    var t2 = 0;
+    p.onplaying = function() {
+        console.log("playing")
+        timer=performance.now();
+    }
+    p.onpause = function() {
+        console.log("paused")
+        t2 = performance.now();
+        console.log(Math.ceil((t2-timer)/60000) + " time")
+    }
+    player.on("Playing", t)
+    const t = ()=>{alert('s')}
+
+    player.handleTechPause_ = function(){
+        alert('paused')
+
+        this.removeClass('vjs-playing');
+        this.addClass('vjs-paused');
+        /**
+     * Fired whenever the media has been paused
+     *
+     * @event Player#pause
+     * @type {EventTarget~Event}
+     */
+
+       this.trigger('pause');
+        
+    }
+
+    $(window).keypress(function(e) {
+        console.log("Entering keypress function");
+        var video = videojs('my-player');
+        if (e.which == 32) {
+            if (video.paused()){
+                console.log("Play paused video");
+                video.play();
+            }
+             else{
+                console.log("Pause video!");
+                video.pause();
+             }
+        }
+    });
+
+    (function(window, videojs) {
+      var player = videojs('my-player');
+      player.overlay({
+        content: 'Default overlay content',
+        debug: true,
+        overlays: [{
+          content: 'The video is playing!',
+          start: 'play',
+          end: 'infinity'
+        }, {
+          start: 0,
+          end: 15,
+          align: 'bottom-left'
+        }, {
+          start: 15,
+          end: 30,
+          align: 'bottom'
+        }, {
+          start: 30,
+          end: 45,
+          align: 'bottom-right'
+        }, {
+          start: 20,
+          end: 'pause'
+        }]
+      });
+
+      
+    }(window, window.videojs));
+
+    console.log("Ran this");
+</script>
+
+<script>{
+//     <source src="https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd",
+//    type="application/dash+xml"></source>
+
+}
+</script>
+
+</body>
+</html>
+
