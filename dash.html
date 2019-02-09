@@ -30,9 +30,11 @@
       
 
         <video 
+            class="video-js vjs-default-skin vjs-big-play-centered"
             id=my-player
             preload="auto"
             class="video-js vjs-default-skin vjs-big-play-centered" controls
+            height="720" width="1040"
             data-setup='{
                 "playbackRates": [0.5,1,1.5,2],
                 "plugins": {"watermark": {"file": "logo.png", "xpos": 100, "ypos":100, "xrepeat":0, "opacity":100}}
@@ -46,11 +48,20 @@
         player.ready(function() {
             $('my_player').bind('contextmenu',function() { return false; });
           player.src({
-            src: 'https://s3-us-west-2.amazonaws.com/sanats/stream.mpd',
-            type: 'application/dash+xml'
+              src: "https://s3.us-east-2.amazonaws.com/sanats2/test/stream.mpd",
+            //src: 'file://C://Users//sanat//Pictures//test2//stream.mpd',
+            type: 'application/dash+xml',
+            keySystemOptions: [
+            {
+            name: 'com.widevine.alpha',
+            options: {
+                serverURL: 'https://widevine-dash.ezdrm.com/proxy?pX=3D59BB'
+            }
+            }]
           });
         });
 
+//  src: 'https://s3-us-west-2.amazonaws.com/sanats/stream.mpd'
 //            src: 'http://dash.akamaized.net/dash264/TestCasesIOP33/MPDChaining/fallback_chain/1/manifest_fallback_MPDChaining.mpd',
 
         setInterval(executeOverlay, 5000, player);
