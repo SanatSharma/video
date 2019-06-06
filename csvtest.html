@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <script src="jquery.csv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
+<head>
+</head>
+<body>
+    <input type="file" id="input" onchange="handleFiles(this.files)">
+    <script>
+    function handleFiles(files){
+        f = files[0]
+
+            var reader = new FileReader();
+            reader.onload = function(){
+                var text = reader.result;          
+                console.log(text);
+                console.log("!!!!!!!!!");
+                console.log($.csv.toObjects(csv))
+            };
+        reader.readAsText(f);
+    }
+    </script>
+</body>
+
+</html>
