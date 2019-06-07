@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>File Handling</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
     <script src="jquery.csv.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
-<head>
-</head>
-<body>
-    <input type="file" id="input" onchange="handleFiles(this.files)">
+  </head>
+
+  <body>
+
+    <div id="container">
+      <section id="content">
+        <input type="file" id="files" name="files[]" multiple />
+        <h2>Result</h2>
+        <textarea id="result" style="height: 250px;"></textarea>
+      </section>
+    </div>
+
+    
     <script>
-    function handleFiles(files){
-        f = files[0]
+      $(document).ready(function() {        
+          $('#files').bind('change', handleDialog);        
+      });
 
-            var reader = new FileReader();
-            reader.onload = function(){
-                var text = reader.result;          
-                console.log(text);
-                console.log("!!!!!!!!!");
-                console.log($.csv.toObjects(csv))
-            };
-        reader.readAsText(f);
-    }
+      function handleDialog(event) {
+        var files = event.target.files;
+        var file = files[0];
+
+        var reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = function(event){
+          var csv = event.target.result;
+          var data = $.csv.toObjects(csv);
+          console.log(data[0])
+          $('#result').empty();
+          $('#result').html(JSON.stringify(data, null, 2));
+        }
+      }
     </script>
-</body>
-
+  </body>
 </html>
